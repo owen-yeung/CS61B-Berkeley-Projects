@@ -2,26 +2,24 @@
  *  @author YOUR NAME HERE
  */
 public class Collatz {
-
-    /** Buggy implementation of nextNumber! */
-    public static int nextNumber(int n) {
-        if (n  == 128) {
-            return 1;
-        } else if (n == 5) {
-            return 3 * n + 1;
-        } else {
-            return n * 2;
-        }
-    }
-
     public static void main(String[] args) {
         int n = 5;
-        System.out.print(n + " ");
-        while (n != 1) {
-            n = nextNumber(n);
-            System.out.print(n + " ");
+        String res = "5 ";
+        while (n!=1){
+            n=nextNumber(n);
+            res = res + n + " ";
         }
-        System.out.println();
+        System.out.print(res);
+
+    }
+    public static int nextNumber(int n){
+        /** Returns next number in collatz sequence */
+        if (n%2==0){
+            return n/2;
+        }
+        else {
+            return 3*n+1;
+        }
     }
 }
 

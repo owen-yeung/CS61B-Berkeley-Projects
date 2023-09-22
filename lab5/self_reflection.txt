@@ -4,27 +4,27 @@ ArrayDeque:
 
 Q: Give an example of at least one idea from the staff solution that would have made your solution better (if any).
 
-A: 
+A: None, I used pretty much the same approach as the staff solution
 
 Q: What's something you felt proud of in your code, if anything?
 
-A:
+A: Relatively elegant solution with no "last" variable, loopAdd helper is very helpful
 
 Q: What's something that was particularly inelegant in your code, if anything?
 
-A:
+A: 
 
 Q: What did you learn by talking to your partner about writing ArrayDeque?
 
-A:
+A: Could've used arraycopy, but that's a bad idea
 
 Q: What do you wish you would have known before writing ArrayDeque, if anything?
 
-A:
+A: Don't worry about last, it is determined from first and size; Where first is doesn't matter when resizing, just set it to 0 to simplify.
 
 Q: If you wrote ArrayDeque again, what would you do differently, if anything?
 
-A:
+A: Don't bother with last, just set first to 0 at resizing, write the loopAdd helper first
 
 -----
 
@@ -32,11 +32,11 @@ LinkedListDeque:
 
 Q: Give an example of at least one idea from the staff solution that would have made your solution better (if any).
 
-A: 
+A: None, I used pretty much the same approach as the staff solution
 
 Q: What's something you felt proud of in your code, if anything?
 
-A:
+A: The circular topology felt very clean and elegant, made the main task of deques (adding and removing first/last value) very efficient
 
 Q: What's something that was particularly inelegant in your code, if anything?
 
@@ -44,15 +44,15 @@ A:
 
 Q: What did you learn by talking to your partner about writing LinkedListDeque?
 
-A:
+A: The double sentinel method was alot messier than the circular topology
 
 Q: What do you wish you would have known before writing LinkedListDeque, if anything?
 
-A:
+A: Don't write a toString method for printdeque
 
 Q: If you wrote LinkedListDeque again, what would you do differently, if anything?
 
-A:
+A: 
 
 -----
 
@@ -60,4 +60,4 @@ Meta:
 
 Q: Did you like this design review process? Anything we should do differently next time?
 
-A: 
+A: It's okay, it

@@ -28,11 +28,7 @@ RMAKE = "$(MAKE)"
 # A CLASSPATH value that (seems) to work on both Windows and Unix systems.
 # To Unix, it looks like ..:$(CLASSPATH):JUNK and to Windows like
 # JUNK;..;$(CLASSPATH).
-
-LIB = ../../library-sp21/javalib/*
-
-
-CPATH = "$(LIB):..:$(CLASSPATH):;$(LIB);..;$(CLASSPATH)"
+CPATH = "..:$(CLASSPATH):;..;$(CLASSPATH)"
 
 # All .java files in this directory.
 SRCS := $(wildcard *.java)

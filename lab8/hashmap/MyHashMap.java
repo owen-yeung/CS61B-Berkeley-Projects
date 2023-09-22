@@ -1,6 +1,6 @@
 package hashmap;
 
-import java.util.Collection;
+import java.util.*;
 
 /**
  *  A hash table-backed Map implementation. Provides amortized constant time
@@ -27,12 +27,19 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
 
     /* Instance Variables */
     private Collection<Node>[] buckets;
+    private double mlf;
+    private int size;
+    private HashSet<K> keys;
     // You should probably define some more!
 
     /** Constructors */
-    public MyHashMap() { }
+    public MyHashMap() {
+        this(16, 0.75);
+    }
 
-    public MyHashMap(int initialSize) { }
+    public MyHashMap(int initialSize) {
+        this(initialSize, 0.75);
+    }
 
     /**
      * MyHashMap constructor that creates a backing array of initialSize.
@@ -41,13 +48,18 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
      * @param initialSize initial size of backing array
      * @param maxLoad maximum load factor
      */
-    public MyHashMap(int initialSize, double maxLoad) { }
+    public MyHashMap(int initialSize, double maxLoad) {
+        buckets = createTable(initialSize);
+        mlf = maxLoad;
+        size = 0;
+        keys = new HashSet<K>();
+    }
 
     /**
      * Returns a new node to be placed in a hash table bucket
      */
     private Node createNode(K key, V value) {
-        return null;
+        return new Node(key, value);
     }
 
     /**
@@ -69,7 +81,7 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
      * OWN BUCKET DATA STRUCTURES WITH THE NEW OPERATOR!
      */
     protected Collection<Node> createBucket() {
-        return null;
+        return new HashSet<>();
     }
 
     /**
@@ -82,10 +94,110 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
      * @param tableSize the size of the table to create
      */
     private Collection<Node>[] createTable(int tableSize) {
+        Collection<Node>[] b = new Collection[tableSize];
+        for (int i = 0; i < tableSize; i++) {
+            b[i] = createBucket();
+        }
+        return b;
+    }
+
+    private int keyToIndex(K key) {
+        return Math.floorMod(key.hashCode(), buckets.length);
+    }
+
+    /** Returns pointer to the Node with given key, returns null if no such node */
+    private Node getNode(K key) {
+        for (Node i : buckets[keyToIndex(key)]) {
+            if (i != null && i.key.equals(key)) {
+                return i;
+            }
+        }
         return null;
+    }
+
+    private void resize() {
+        Collection<Node>[] newbuckets = createTable(buckets.length * 2);
+        for (K key : keys) {
+            Node n = getNode(key);
+            if (n != null) {
+                newbuckets[keyToIndex(key)].add(n);
+            }
+        }
+        buckets = newbuckets;
     }
 
     // TODO: Implement the methods of the Map61B Interface below
     // Your code won't compile until you do so!
 
+    @Override
+    public V remove(K key) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public V remove(K key, V value) {
+        throw new UnsupportedOperationException();
+    }
+
+    /** Removes all of the mappings from this map. */
+    public void clear() {
+        buckets = createTable(16);
+        size = 0;
+        keys = new HashSet<K>();
+    }
+
+    /** Returns true if this map contains a mapping for the specified key. */
+    public boolean containsKey(K key) {
+        return keys.contains(key);
+    }
+
+    /**
+     * Returns the value to which the specified key is mapped, or null if this
+     * map contains no mapping for the key.
+     */
+    public V get(K key) {
+        Node n = getNode(key);
+        if (n == null) {
+            return null;
+        } else {
+            return n.value;
+        }
+    }
+
+    /** Returns the number of key-value mappings in this map. */
+    public int size() {
+        return size;
+    }
+
+    /**
+     * Associates the specified value with the specified key in this map.
+     * If the map previously contained a mapping for the key,
+     * the old value is replaced.
+     * Should resize, update size
+     */
+    public void put(K key, V value) {
+        Node n = getNode(key);
+        if (n != null) {
+            n.value = value;
+        } else {
+            //Resize
+            size += 1;
+            if (size / buckets.length > mlf) {
+                resize();
+            }
+            n = createNode(key, value);
+            buckets[keyToIndex(key)].add(n);
+            keys.add(key);
+        }
+    }
+
+    /** Returns a Set view of the keys contained in this map. */
+    public Set<K> keySet() {
+        return keys;
+    }
+
+    @Override
+    public Iterator<K> iterator() {
+        return keys.iterator();
+    }
 }

@@ -236,4 +236,13 @@ class Utils {
         System.out.printf(msg, args);
         System.out.println();
     }
+
+    /** Returns whether the strings are equal, or if both are null */
+    static boolean safeEquals(String a, String b) {
+        if (a == null) {
+            return b == null;
+        } else {
+            return a.equals(b);
+        }
+    }
 }

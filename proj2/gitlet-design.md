@@ -1,26 +1,30 @@
 # Gitlet Design Document
 
-**Name**:
+**Name**: Owen
 
 ## Classes and Data Structures
 
-### Class 1
+### Commit
 
-#### Fields
+#### Variables
+
+1. message
+2. date
+3. 
+
+
+### Repository
+
+#### Variables
 
 1. Field 1
 2. Field 2
 
-
-### Class 2
-
-#### Fields
-
-1. Field 1
-2. Field 2
 
 
 ## Algorithms
 
 ## Persistence
-
+* Stage directory has a directory for each commit, containing the mappings 
+  from filenames to blob ids0 (Pseudo "map")
+  * Store split point when instantiating branch object?

@@ -53,6 +53,8 @@ public class Tile {
     public Tile merge(int col, int row, Tile otherTile) {
         assert value == otherTile.value();
         next = otherTile.next = new Tile(2 * value, col, row);
+        //Delete next line after testing
+//        System.out.println("Merge occurred: "+ this.value() +" and " + otherTile.value());
         return next;
     }
 
