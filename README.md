@@ -10,9 +10,9 @@ Brief details for each project:
 
 Implement the core game mechanic of 2048
 
-**My contribution:** Completed the Model class (emptySpaceExists, maxTileExists, atLeastOneMoveExists and tilt methods)
-
 See https://sp21.datastructur.es/materials/proj/proj0/proj0#your-assignment for details
+
+**My contribution:** Completed the Model class (emptySpaceExists, maxTileExists, atLeastOneMoveExists and tilt methods)
 
 # Project 1 (Double Ended Queue):
 
