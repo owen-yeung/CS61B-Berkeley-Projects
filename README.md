@@ -20,7 +20,7 @@ Implement the 'double ended queue' data structure twice, using linked lists and 
 
 See https://sp21.datastructur.es/materials/proj/proj1/proj1#project-tasks for details
 
-**My contribution:** 
+**My contribution:** Everything in LinkedListDeque, ArrayDeque, MaxArrayDeque, as well as completing the GuitarString class
 
 # Project 2 (Mini Git):
 
