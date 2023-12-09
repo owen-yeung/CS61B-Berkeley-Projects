@@ -1,4 +1,4 @@
-My projects from UC Berkeley's Data Structures course CS61B.
+My projects from UC Berkeley's Data Structures course CS61B, where I got an A+
 
 See https://sp21.datastructur.es/ for course content and project specifications.
 
